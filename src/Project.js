@@ -33,5 +33,12 @@ const Project = module.exports = {
 		return (await axios.get(`${base}/project/list`, {
 			auth
 		})).data;
+	},
+
+	async deploy(id) {
+		return (await axios.post(`${base}/project/deploy`, {}, {
+			params: { id },
+			auth
+		})).data;
 	}
 };

@@ -63,6 +63,18 @@
 							<h3 class="col-xs-8">{{project.name}}</h3>
 
 							<div class="col-xs-4">
+								<span v-on:click="deployProject(project)">
+									Deploy
+								</span>
+
+								<span v-if="project.active === true" v-on:click="project.active = false; editProject(project)">
+									On
+								</span>
+
+								<span v-else v-on:click="project.active = true; editProject(project)">
+									Off
+								</span>
+
 								<a href="#" v-on:click="deleteProject(project)" class="delete">Delete</a>
 							</div>
 

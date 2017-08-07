@@ -6,7 +6,6 @@
 body {
 	font-family: "Lato";
 	line-height: 1.5;
-	letter-spacing: 0.05rem;
 	color: #464545;
 }
 
@@ -23,6 +22,7 @@ a {
 
 h1, h2, h3 {
 	font-weight: 600;
+	letter-spacing: 0.2rem;
 }
 
 h4, h5, h6 {

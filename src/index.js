@@ -29,7 +29,8 @@ const app = new Vue({
 				servers: Object.keys(project.servers)
 					.filter(id => project.servers[id] === true),
 				repo: project.repo,
-				directory: project.directory
+				directory: project.directory,
+				active: true
 			});
 
 			this.newProject = false;
@@ -50,6 +51,15 @@ const app = new Vue({
 		async deleteServer(server) {
 			await Server.delete(server.id);
 			await this.updateServers();
+		},
+
+		async editProject(project) {
+			await Project.edit(project);
+			await this.updateProjects();
+		},
+
+		async deployProject(project) {
+			alert(JSON.stringify(await Project.deploy(project.id), null, "\t"));
 		}
 	}
 });
