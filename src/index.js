@@ -4,6 +4,7 @@ const Server = require("./Server");
 
 window.Project = Project;
 window.Server = Server;
+window.auth = require("./auth");
 
 const app = new Vue({
 	el: "main",

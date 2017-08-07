@@ -1,28 +1,37 @@
 const axios = require("axios");
 const base = require("./base");
+const auth = require("./auth");
 
 const Project = module.exports = {
 	async create(project) {
-		return (await axios.post(`${base}/project/create`, project)).data;
+		return (await axios.post(`${base}/project/create`, project, {
+			auth
+		})).data;
 	},
 
 	async delete(id) {
 		return (await axios.get(`${base}/project/delete`, {
-			params: { id }
+			params: { id },
+			auth
 		})).data;
 	},
 
 	async edit(project) {
-		return (await axios.post(`${base}/project/edit`, project)).data;
+		return (await axios.post(`${base}/project/edit`, project, {
+			auth
+		})).data;
 	},
 
 	async find(id) {
 		return (await axios.get(`${base}/project/find`, {
-			params: { id }
+			params: { id },
+			auth
 		})).data;
 	},
 
 	async list() {
-		return (await axios.get(`${base}/project/list`)).data;
+		return (await axios.get(`${base}/project/list`, {
+			auth
+		})).data;
 	}
 };
