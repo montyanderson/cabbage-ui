@@ -60,22 +60,24 @@
 				<div class="row list">
 					<div v-for="project in projects" class="col-xs-12 col-lg-6">
 						<div class="project row">
-							<h3 class="col-xs-8">{{project.name}}</h3>
+							<div class="col-xs-6">
+								<h3>{{project.name}}</h3>
+							</div>
 
-							<div class="col-xs-4">
-								<span v-on:click="deployProject(project)">
+							<div class="col-xs-6">
+								<button class="small deploy" v-on:click="deployProject(project)">
 									Deploy
-								</span>
+								</button>
 
-								<span v-if="project.active === true" v-on:click="project.active = false; editProject(project)">
+								<button class="small on" v-if="project.active === true" v-on:click="project.active = false; editProject(project)">
 									On
-								</span>
+								</button>
 
-								<span v-else v-on:click="project.active = true; editProject(project)">
+								<button class="small off" v-else v-on:click="project.active = true; editProject(project)">
 									Off
-								</span>
+								</button>
 
-								<a href="#" v-on:click="deleteProject(project)" class="delete">Delete</a>
+								<button class="small delete" v-on:click="deleteProject(project)">Delete</button>
 							</div>
 
 							<h4 class="col-xs-12">{{project.repo}}</h4>
@@ -128,10 +130,12 @@
 				<div class="row list">
 					<div v-for="server in servers" class="col-xs-12 col-lg-6">
 						<div class="server row">
-							<h3 class="col-xs-8">{{server.name}}</h3>
+							<div class="col-xs-8">
+								<h3>{{server.name}}</h3>
+							</div>
 
 							<div class="col-xs-4">
-								<a href="#" v-on:click="deleteServer(server)" class="delete">Delete</a>
+								<button class="delete" v-on:click="deleteServer(server)" class="delete">Delete</button>
 							</div>
 
 							<h4 class="col-xs-12">{{server.username}}@{{server.address}}:{{server.port}}</h4>
