@@ -10,6 +10,11 @@ body {
 	color: #464545;
 }
 
+.container {
+	width: 55%;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 a {
 	text-decoration: inherit;
@@ -35,29 +40,60 @@ header, section {
 }
 
 button, .button {
-	padding: 0.5rem;
+	padding: 0.5rem 1rem 0.5rem 1rem;
 	background-color: #F38181;
 	font-size: 1.5rem;
 	color: white;
 	font-family: "Lato";
 	border: none;
 	border-radius: 0.1rem;
+	transition: 0.15s filter;
+}
+
+button:hover, .button:hover {
+	filter: saturate(180%);
 }
 
 #projects input, #servers input {
 	width: 100%;
-	padding: 0.5rem;
-	font-size: 1rem;
+	padding: 0.6rem;
+	font-size: 1.2rem;
 	margin-bottom: 1rem;
+	background-color: #fafbfc;
+	outline: none;
+	border: 1px solid #d1d5da;
+	font-family: "Lato";
+	border-radius: 0.1rem;
 }
 
 #projects > *, #servers > * {
 	margin-bottom: 2rem;
 }
 
+@keyframes slidein {
+  from {
+	  margin-top: -50px;
+  }
+
+  to {
+	  margin-top: 0;
+  }
+}
+
 .project, .server {
 	padding: 1rem 2rem 1rem 2rem;
 	border-radius: 0.1rem;
+}
+
+.form < * {
+	background-color: white;
+}
+
+.form {
+	z-index: 0;
+	background-color: transparent;
+	animation-duration: 0.2s;
+	animation-name: slidein;
 }
 
 .project { background-color: #95E1D3; }
@@ -68,13 +104,12 @@ input[type="checkbox"] {
 	width: auto !important;
 }
 
-.container {
-	width: 55%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
 .delete {
 	font-weight: 900;
-	color: #FC5185;
+	color: #F38181;
+	background-color: white;
+	padding: 0.4rem;
+	margin-top: 5rem;
+	border-radius: 0.1rem;
+	font-size: 1rem;
 }
