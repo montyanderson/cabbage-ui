@@ -19,13 +19,11 @@
   },
   "homepage": "https://github.com/montyanderson/cabbage-ui#readme",
   "dependencies": {
+	"browserify": "^14.4.0",
+	"watchify": "^3.9.0",
     "axios": "^0.16.2",
     "vue": "^2.4.2"
   },
-  "devDependencies": {
-    "browserify": "^14.4.0",
-    "watchify": "^3.9.0"
-},
   "browser": {
   "vue": "vue/dist/vue.common.js"
 }
