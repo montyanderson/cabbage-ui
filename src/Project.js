@@ -4,26 +4,26 @@ const auth = require("./auth");
 
 const Project = module.exports = {
 	async create(project) {
-		return (await axios.post(`${base}/project/create`, project, {
+		return (await axios.put(`${base}/project`, project, {
 			auth
 		})).data;
 	},
 
 	async delete(id) {
-		return (await axios.get(`${base}/project/delete`, {
+		return (await axios.delete(`${base}/project`, {
 			params: { id },
 			auth
 		})).data;
 	},
 
 	async edit(project) {
-		return (await axios.post(`${base}/project/edit`, project, {
+		return (await axios.post(`${base}/project`, project, {
 			auth
 		})).data;
 	},
 
 	async find(id) {
-		return (await axios.get(`${base}/project/find`, {
+		return (await axios.get(`${base}/project`, {
 			params: { id },
 			auth
 		})).data;

@@ -56,11 +56,15 @@
 				</div>
 			</div>
 
-			<div class="list">
-				<div v-for="project in projects" class="col-xs-12 col-md-6 col-lg-4">
-					<h3>{{project.name}}</h3>
-					<h4>{{project.repo}}</h4>
-					<a href="#" v-on:click="deleteProject(project)">Delete</a>
+			<div class="col-xs-12">
+				<div class="row list">
+					<div v-for="project in projects" class="col-xs-12 col-lg-6">
+						<div class="project">
+							<h3>{{project.name}}</h3>
+							<h4>{{project.repo}}</h4>
+							<a href="#" v-on:click="deleteProject(project)" class="delete">Delete</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -103,11 +107,15 @@
 				</div>
 			</div>
 
-			<div class="list">
-				<div v-for="server in servers" class="col-xs-12 col-md-6 col-lg-4">
-					<h3>{{server.name}}</h3>
-					<h4>{{server.username}}@{{server.address}}:{{server.port}}</h4>
-					<a href="#" v-on:click="deleteServer(server)">Delete</a>
+			<div class="col-xs-12">
+				<div class="row list">
+					<div v-for="server in servers" class="col-xs-12 col-lg-6">
+						<div class="server">
+							<h3>{{server.name}}</h3>
+							<h4>{{server.username}}@{{server.address}}:{{server.port}}</h4>
+							<a href="#" v-on:click="deleteServer(server)" class="delete">Delete</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>

@@ -7,8 +7,9 @@ body {
 	font-family: "Lato";
 	line-height: 1.5;
 	letter-spacing: 0.05rem;
-	color: #363636;
+	color: #464545;
 }
+
 
 a {
 	text-decoration: inherit;
@@ -35,6 +36,12 @@ header, section {
 
 button, .button {
 	padding: 0.5rem;
+	background-color: #F38181;
+	font-size: 1.5rem;
+	color: white;
+	font-family: "Lato";
+	border: none;
+	border-radius: 0.1rem;
 }
 
 #projects input, #servers input {
@@ -44,17 +51,30 @@ button, .button {
 	margin-bottom: 1rem;
 }
 
+#projects > *, #servers > * {
+	margin-bottom: 2rem;
+}
+
+.project, .server {
+	padding: 1rem 2rem 1rem 2rem;
+	border-radius: 0.1rem;
+}
+
+.project { background-color: #95E1D3; }
+.server  { background-color: #FCE38A; }
+
 input[type="checkbox"] {
 	display: inline-block !important;
 	width: auto !important;
-}
-
-#projects .list, #servers .list {
-	margin-top: 2rem;
 }
 
 .container {
 	width: 55%;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.delete {
+	font-weight: 900;
+	color: #FC5185;
 }

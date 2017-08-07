@@ -4,26 +4,26 @@ const auth = require("./auth");
 
 const Server = module.exports = {
 	async create(server) {
-		return (await axios.post(`${base}/server/create`, server, {
+		return (await axios.put(`${base}/server`, server, {
 			auth
 		})).data;
 	},
 
 	async delete(id) {
-		return (await axios.get(`${base}/server/delete`, {
+		return (await axios.delete(`${base}/server`, {
 			params: { id },
 			auth
 		})).data;
 	},
 
 	async edit(server) {
-		return (await axios.post(`${base}/server/edit`, server, {
+		return (await axios.post(`${base}/server`, server, {
 			auth
 		})).data;
 	},
 
 	async find(id) {
-		return (await axios.get(`${base}/server/find`, {
+		return (await axios.get(`${base}/server`, {
 			params: { id },
 			auth
 		})).data;
