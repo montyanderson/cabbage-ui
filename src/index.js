@@ -80,5 +80,7 @@ const app = new Vue({
 	}
 });
 
+document.querySelector("main").style.display = "block";
+
 app.updateProjects();
 app.updateServers();
