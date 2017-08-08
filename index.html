@@ -78,7 +78,7 @@
 								<h3><i class="fa fa-hdd-o" aria-hidden="true"></i> {{project.name}}</h3>
 							</div>
 
-							<div class="col-xs-6">
+							<div class="col-xs-6 buttons">
 								<button class="small deploy" v-on:click="deployProject(project)">
 									Deploy
 								</button>
@@ -143,14 +143,14 @@
 
 			<div class="col-xs-12">
 				<div class="row list">
-					<div v-for="server in servers" class="col-xs-12 col-lg-6">
+					<div v-for="server in servers" class="col-xs-12">
 						<div class="server row">
 							<div class="col-xs-8">
 								<h3><i class="fa fa-server" aria-hidden="true"></i> {{server.name}}</h3>
 							</div>
 
-							<div class="col-xs-4">
-								<button class="delete" v-on:click="deleteServer(server)" class="delete">Delete</button>
+							<div class="col-xs-4 buttons">
+								<button class="small delete" v-on:click="deleteServer(server)" class="delete">Delete</button>
 							</div>
 
 							<h4 class="col-xs-12">{{server.username}}@{{server.address}}:{{server.port}}</h4>
