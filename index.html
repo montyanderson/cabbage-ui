@@ -11,9 +11,21 @@
 </head>
 <body>
 
+	<div id="app">
+
 	<header>
 		<div class="container">
 			<h1>cabbage</h1>
+
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<input placeholder="Username" v-model="username" v-on:keyup.enter="updateLogin">
+				</div>
+
+				<div class="col-xs-12 col-md-6">
+					<input placeholder="Password" v-model="password" v-on:keyup.enter="updateLogin" type="password">
+				</div>
+			</div>
 		</div>
 	</header>
 
@@ -147,6 +159,8 @@
 			</div>
 		</section>
 	</main>
+
+	</div>
 
 	<script src="bundle.js"></script>
 </body>

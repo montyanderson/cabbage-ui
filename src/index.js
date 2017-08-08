@@ -1,20 +1,31 @@
 const Vue = require("vue");
+const auth = require("./auth");
 const Project = require("./Project");
 const Server = require("./Server");
 
-window.Project = Project;
-window.Server = Server;
-window.auth = require("./auth");
-
 const app = new Vue({
-	el: "main",
+	el: "#app",
 	data: {
 		projects: [],
 		servers: [],
 		newProject: false,
-		newServer: false
+		newServer: false,
+		username: auth.username,
+		password: auth.password
 	},
 	methods: {
+		async updateLogin() {
+			auth.username = this.username;
+			auth.password = this.password;
+
+			try {
+				await this.updateProjects();
+				await this.updateServers();
+			} catch(err) {
+
+			}
+		},
+
 		async updateProjects() {
 			app.projects = await Project.list();
 		},
