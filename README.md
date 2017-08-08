@@ -4,7 +4,7 @@ Web interface for [cabbage](https://github.com/montyanderson/cabbage), built at 
 
 [![dependencies Status](https://david-dm.org/montyanderson/cabbage-ui/status.svg)](https://david-dm.org/montyanderson/cabbage-ui)
 
-![](http://i.imgur.com/Hk2xyv2.png)
+![](http://i.imgur.com/bdsAjXL.png)
 
 ## Install
 
