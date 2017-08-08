@@ -74,7 +74,7 @@ const app = new Vue({
 				const res = await Project.deploy(project.id);
 				alert(JSON.stringify(res, null, "\t"));
 			} catch(err) {
-				alert(`Deployment failed! ${err}`);
+				//alert(`Deployment failed! ${err}`);
 			}
 		}
 	}
