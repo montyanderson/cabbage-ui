@@ -1,1 +1,1 @@
-module.exports = "http://localhost/node";
+module.exports = "/api";
