@@ -31,7 +31,7 @@
 
 	<main class="container">
 		<section id="projects" class="row">
-			<h2 class="col-xs-12">Projects</h2>
+			<h2 class="col-xs-12"><i class="fa fa-folder-open-o" aria-hidden="true"></i> Projects</h2>
 
 			<div class="col-xs-12">
 				<button v-on:click="newProject = typeof newProject === 'object' ? false : { servers: {} }">Create a new Project</button>
@@ -95,6 +95,7 @@
 							</div>
 
 							<h4 class="col-xs-12">{{project.repo}}</h4>
+							<h5 class="col-xs-12">{{project.pushSecret}}</h5>
 
 						</div>
 					</div>
@@ -103,7 +104,7 @@
 		</section>
 
 		<section id="servers" class="row">
-			<h2 class="col-xs-12">Servers</h2>
+			<h2 class="col-xs-12"><i class="fa fa-folder-open-o" aria-hidden="true"></i> Servers</h2>
 
 			<div class="col-xs-12">
 				<button v-on:click="newServer = typeof newServer === 'object' ? false : {}">Create a new Server</button>
