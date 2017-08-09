@@ -24,7 +24,9 @@ const app = window.app = new Vue({
 				await this.updateServers();
 				this.loggedIn = true;
 			} catch(err) {
-
+				this.loggedIn = false;
+				app.projects = [];
+				app.servers = [];
 			}
 		},
 
@@ -96,9 +98,4 @@ const app = window.app = new Vue({
 	}
 });
 
-try {
-	app.updateProjects();
-	app.updateServers();
-} catch(error) {
-	console.log(error);
-}
+app.updateLogin();
