@@ -3,7 +3,7 @@ const auth = require("./auth");
 const Project = require("./Project");
 const Server = require("./Server");
 
-const app = new Vue({
+const app = window.app = new Vue({
 	el: "#app",
 	data: {
 		projects: [],
@@ -35,14 +35,11 @@ const app = new Vue({
 		},
 
 		async createProject(project) {
-			await Project.create({
-				name: project.name,
-				servers: Object.keys(project.servers)
-					.filter(id => project.servers[id] === true),
-				repo: project.repo,
-				directory: project.directory,
-				active: true
-			});
+			if(!project.id) {
+				await Project.create(project);
+			} else {
+				await Project.edit(project);
+			}
 
 			this.newProject = false;
 			await this.updateProjects();
@@ -75,6 +72,16 @@ const app = new Vue({
 				alert(JSON.stringify(res, null, "\t"));
 			} catch(err) {
 				//alert(`Deployment failed! ${err}`);
+			}
+		},
+
+		arrayToggle(array, item) {
+			const index = array.indexOf(item);
+
+			if(index === -1) {
+				array.push(item);
+			} else {
+				array.splice(index, 1);
 			}
 		}
 	}

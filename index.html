@@ -34,7 +34,7 @@
 			<h2 class="col-xs-12"><i class="fa fa-folder-open-o" aria-hidden="true"></i> Projects</h2>
 
 			<div class="col-xs-12">
-				<button v-on:click="newProject = typeof newProject === 'object' ? false : { servers: {} }">Create a new Project</button>
+				<button v-on:click="newProject = typeof newProject === 'object' ? false : { servers: [], active: true }">Create a new Project</button>
 			</div>
 
 			<div class="col-xs-12">
@@ -49,7 +49,7 @@
 					<div class="col-xs-12">
 						<div class="row" v-for="server in servers">
 							<div class="col-xs-1">
-								<input type="checkbox" v-model="newProject.servers[server.id]">
+								<input type="checkbox" v-bind:checked="newProject.servers.indexOf(+server.id) > -1" v-on:click="arrayToggle(newProject.servers, +server.id)">
 							</div>
 
 							<div class="col-xs-11">{{server.name}}</div>
@@ -65,7 +65,8 @@
 					</div>
 
 					<div class="col-xs-12">
-						<button v-on:click="createProject(newProject)">Create</button>
+						<button v-if="newProject.id" v-on:click="createProject(newProject)">Save</button>
+						<button v-else v-on:click="createProject(newProject)">Create</button>
 					</div>
 				</div>
 			</div>
@@ -78,7 +79,11 @@
 								<h3><i class="fa fa-hdd-o" aria-hidden="true"></i> {{project.name}}</h3>
 							</div>
 
-							<div class="col-xs-6 buttons">
+							<div class="col-xs-6 buttons" v-on:click="newProject = Object.assign({}, project)">
+								<button class="small">
+									Edit
+								</button>
+
 								<button class="small deploy" v-on:click="deployProject(project)">
 									Deploy
 								</button>
