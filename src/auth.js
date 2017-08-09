@@ -3,7 +3,7 @@ module.exports = {
 		if(typeof localStorage.username === "string") {
 			return localStorage.username;
 		} else {
-			throw new Error("Username not defined!");
+			//throw new Error("Username not defined!");
 		}
 	},
 
@@ -15,7 +15,7 @@ module.exports = {
 		if(typeof localStorage.password === "string") {
 			return localStorage.password;
 		} else {
-			throw new Error("Password not defined!");
+			//throw new Error("Password not defined!");
 		}
 	},
 

@@ -11,7 +11,8 @@ const app = window.app = new Vue({
 		newProject: false,
 		newServer: false,
 		username: auth.username,
-		password: auth.password
+		password: auth.password,
+		loggedIn: false
 	},
 	methods: {
 		async updateLogin() {
@@ -21,6 +22,7 @@ const app = window.app = new Vue({
 			try {
 				await this.updateProjects();
 				await this.updateServers();
+				this.loggedIn = true;
 			} catch(err) {
 
 			}
@@ -94,7 +96,9 @@ const app = window.app = new Vue({
 	}
 });
 
-document.querySelector("main").style.display = "block";
-
-app.updateProjects();
-app.updateServers();
+try {
+	app.updateProjects();
+	app.updateServers();
+} catch(error) {
+	console.log(error);
+}
