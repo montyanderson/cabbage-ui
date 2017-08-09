@@ -46,7 +46,14 @@ const app = window.app = new Vue({
 		},
 
 		async createServer(server) {
-			await Server.create(server);
+			console.log("hello!", server);
+
+			if(!server.id) {
+				await Server.create(server);
+			} else {
+				await Server.edit(server);
+			}
+
 			this.newServer = false;
 			await this.updateServers();
 		},

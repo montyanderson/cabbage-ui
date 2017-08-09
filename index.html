@@ -141,7 +141,8 @@
 					</div>
 
 					<div class="col-xs-12">
-						<button v-on:click="createServer(newServer)">Create</button>
+						<button v-if="newServer.id" v-on:click="createServer(newServer)">Save</button>
+						<button v-else="newServer.id" v-on:click="createServer(newServer)">Create</button>
 					</div>
 				</div>
 			</div>
@@ -155,6 +156,7 @@
 							</div>
 
 							<div class="col-xs-4 buttons">
+								<button class="small" v-on:click="newServer = Object.assign({}, server)" class="delete">Edit</button>
 								<button class="small delete" v-on:click="deleteServer(server)" class="delete">Delete</button>
 							</div>
 
