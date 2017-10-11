@@ -37,143 +37,147 @@
 		</div>
 	</header>
 
-	<main class="container" v-if="loggedIn">
-		<section id="projects" class="row">
-			<h2 class="col-xs-12"><i class="fa fa-folder-open-o" aria-hidden="true"></i> Projects</h2>
+	<main class="container row" v-if="loggedIn">
+		<div class="col-xs-6">
+			<section id="projects" class="row">
+				<h2 class="col-xs-12"><i class="fa fa-folder-open-o" aria-hidden="true"></i> Projects</h2>
 
-			<div class="col-xs-12">
-				<button v-on:click="newProject = typeof newProject === 'object' ? false : { servers: [], active: true }">Create a new Project</button>
-			</div>
-
-			<div class="col-xs-12">
-				<div class="row new form" v-if="newProject">
-
-					<!--<h4 class="col-xs-12">New Project</h4>-->
-
-					<div class="col-xs-12">
-						<input placeholder="Name" v-model="newProject.name">
-					</div>
-
-					<div class="col-xs-12">
-						<div class="row" v-for="server in servers">
-							<div class="col-xs-1">
-								<input type="checkbox" v-bind:checked="newProject.servers.indexOf(+server.id) > -1" v-on:click="arrayToggle(newProject.servers, +server.id)">
-							</div>
-
-							<div class="col-xs-11">{{server.name}}</div>
-						</div>
-					</div>
-
-					<div class="col-xs-6">
-						<input placeholder="Repository" v-model="newProject.repo">
-					</div>
-
-					<div class="col-xs-6">
-						<input placeholder="Directory" v-model="newProject.directory">
-					</div>
-
-					<div class="col-xs-12">
-						<button v-if="newProject.id" v-on:click="createProject(newProject)">Save</button>
-						<button v-else v-on:click="createProject(newProject)">Create</button>
-					</div>
+				<div class="col-xs-12">
+					<button v-on:click="newProject = typeof newProject === 'object' ? false : { servers: [], active: true }">Create a new Project</button>
 				</div>
-			</div>
 
-			<div class="col-xs-12">
-				<div class="row list">
-					<div v-for="project in projects" class="col-xs-12">
-						<div class="project row">
-							<div class="col-xs-6">
-								<h3><i class="fa fa-hdd-o" aria-hidden="true"></i> {{project.name}}</h3>
+				<div class="col-xs-12">
+					<div class="row new form" v-if="newProject">
+
+						<!--<h4 class="col-xs-12">New Project</h4>-->
+
+						<div class="col-xs-12">
+							<input placeholder="Name" v-model="newProject.name">
+						</div>
+
+						<div class="col-xs-12">
+							<div class="row" v-for="server in servers">
+								<div class="col-xs-1">
+									<input type="checkbox" v-bind:checked="newProject.servers.indexOf(+server.id) > -1" v-on:click="arrayToggle(newProject.servers, +server.id)">
+								</div>
+
+								<div class="col-xs-11">{{server.name}}</div>
 							</div>
+						</div>
 
-							<div class="col-xs-6 buttons">
-								<button class="small" v-on:click="newProject = Object.assign({}, project)">
-									Edit
-								</button>
+						<div class="col-xs-6">
+							<input placeholder="Repository" v-model="newProject.repo">
+						</div>
 
-								<button class="small deploy" v-on:click="deployProject(project)">
-									Deploy
-								</button>
+						<div class="col-xs-6">
+							<input placeholder="Directory" v-model="newProject.directory">
+						</div>
 
-								<button class="small on" v-if="project.active === true" v-on:click="project.active = false; editProject(project)">
-									On
-								</button>
-
-								<button class="small off" v-else v-on:click="project.active = true; editProject(project)">
-									Off
-								</button>
-
-								<button class="small delete" v-on:click="deleteProject(project)">Delete</button>
-							</div>
-
-							<h4 class="col-xs-12">{{project.repo}}</h4>
-							<h5 class="col-xs-12">{{project.pushSecret}}</h5>
-
+						<div class="col-xs-12">
+							<button v-if="newProject.id" v-on:click="createProject(newProject)">Save</button>
+							<button v-else v-on:click="createProject(newProject)">Create</button>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
 
-		<section id="servers" class="row">
-			<h2 class="col-xs-12"><i class="fa fa-folder-open-o" aria-hidden="true"></i> Servers</h2>
+				<div class="col-xs-12">
+					<div class="row list">
+						<div v-for="project in projects" class="col-xs-12">
+							<div class="project row">
+								<div class="col-xs-6">
+									<h3><i class="fa fa-hdd-o" aria-hidden="true"></i> {{project.name}}</h3>
+								</div>
 
-			<div class="col-xs-12">
-				<button v-on:click="newServer = typeof newServer === 'object' ? false : {}">Create a new Server</button>
-			</div>
+								<div class="col-xs-6 buttons">
+									<button class="small" v-on:click="newProject = Object.assign({}, project)">
+										Edit
+									</button>
 
-			<div class="col-xs-12">
-				<div class="row new form" v-if="newServer">
+									<button class="small deploy" v-on:click="deployProject(project)">
+										Deploy
+									</button>
 
-					<!--<h4 class="col-xs-12">New Server</h4>-->
+									<button class="small on" v-if="project.active === true" v-on:click="project.active = false; editProject(project)">
+										On
+									</button>
 
-					<div class="col-xs-12">
-						<input placeholder="Name" v-model="newServer.name">
-					</div>
+									<button class="small off" v-else v-on:click="project.active = true; editProject(project)">
+										Off
+									</button>
 
-					<div class="col-xs-6">
-						<input placeholder="Address" v-model="newServer.address">
-					</div>
+									<button class="small delete" v-on:click="deleteProject(project)">Delete</button>
+								</div>
 
-					<div class="col-xs-6">
-						<input placeholder="Port" v-model="newServer.port">
-					</div>
+								<h4 class="col-xs-12">{{project.repo}}</h4>
+								<h5 class="col-xs-12">{{project.pushSecret}}</h5>
 
-					<div class="col-xs-6">
-						<input placeholder="Username" v-model="newServer.username">
-					</div>
-
-					<div class="col-xs-6">
-						<input placeholder="Password" v-model="newServer.password" type="password">
-					</div>
-
-					<div class="col-xs-12">
-						<button v-if="newServer.id" v-on:click="createServer(newServer)">Save</button>
-						<button v-else="newServer.id" v-on:click="createServer(newServer)">Create</button>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-xs-12">
-				<div class="row list">
-					<div v-for="server in servers" class="col-xs-12">
-						<div class="server row">
-							<div class="col-xs-8">
-								<h3><i class="fa fa-server" aria-hidden="true"></i> {{server.name}}</h3>
 							</div>
-
-							<div class="col-xs-4 buttons">
-								<button class="small" v-on:click="newServer = Object.assign({}, server)" class="delete">Edit</button>
-								<button class="small delete" v-on:click="deleteServer(server)" class="delete">Delete</button>
-							</div>
-
-							<h4 class="col-xs-12">{{server.username}}@{{server.address}}:{{server.port}}</h4>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		</div>
+
+		<div class="col-xs-12">
+			<section id="servers" class="row">
+				<h2 class="col-xs-12"><i class="fa fa-folder-open-o" aria-hidden="true"></i> Servers</h2>
+
+				<div class="col-xs-12">
+					<button v-on:click="newServer = typeof newServer === 'object' ? false : {}">Create a new Server</button>
+				</div>
+
+				<div class="col-xs-12">
+					<div class="row new form" v-if="newServer">
+
+						<!--<h4 class="col-xs-12">New Server</h4>-->
+
+						<div class="col-xs-12">
+							<input placeholder="Name" v-model="newServer.name">
+						</div>
+
+						<div class="col-xs-6">
+							<input placeholder="Address" v-model="newServer.address">
+						</div>
+
+						<div class="col-xs-6">
+							<input placeholder="Port" v-model="newServer.port">
+						</div>
+
+						<div class="col-xs-6">
+							<input placeholder="Username" v-model="newServer.username">
+						</div>
+
+						<div class="col-xs-6">
+							<input placeholder="Password" v-model="newServer.password" type="password">
+						</div>
+
+						<div class="col-xs-12">
+							<button v-if="newServer.id" v-on:click="createServer(newServer)">Save</button>
+							<button v-else="newServer.id" v-on:click="createServer(newServer)">Create</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xs-12">
+					<div class="row list">
+						<div v-for="server in servers" class="col-xs-12">
+							<div class="server row">
+								<div class="col-xs-8">
+									<h3><i class="fa fa-server" aria-hidden="true"></i> {{server.name}}</h3>
+								</div>
+
+								<div class="col-xs-4 buttons">
+									<button class="small" v-on:click="newServer = Object.assign({}, server)" class="delete">Edit</button>
+									<button class="small delete" v-on:click="deleteServer(server)" class="delete">Delete</button>
+								</div>
+
+								<h4 class="col-xs-12">{{server.username}}@{{server.address}}:{{server.port}}</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
 	</main>
 
 	</div>
