@@ -63,11 +63,19 @@ const app = window.app = new Vue({
 		},
 
 		async deleteProject(project) {
+			if(confirm(`Are you sure you want to delete ${project.repo}?`) != true) {
+				return;
+			}
+
 			await Project.delete(project.id);
 			await this.updateProjects();
 		},
 
 		async deleteServer(server) {
+			if(confirm(`Are you sure you want to delete ${server.name}?`) != true) {
+				return;
+			}
+
 			await Server.delete(server.id);
 			await this.updateServers();
 		},
