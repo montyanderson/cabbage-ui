@@ -127,5 +127,7 @@ const app = window.app = new Vue({
 app.updateLogin();
 
 setInterval(() => {
-	app.updateLogs();
+	if(app.loggedIn) {
+		app.updateLogs();
+	}
 }, 1500);
