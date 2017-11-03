@@ -130,4 +130,4 @@ setInterval(() => {
 	if(app.loggedIn) {
 		app.updateLogs();
 	}
-}, 1500);
+}, 1000);
