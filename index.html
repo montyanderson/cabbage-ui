@@ -119,6 +119,16 @@
 		</div>
 
 		<div class="col-xs-6">
+			<section id="logs" class="row">
+				<h2 class="col-xs-12"><i class="fa fa-file-text-o" aria-hidden="true"></i> Logs</h2>
+
+				<div class="col-xs-12">
+					<div class="row list">
+						<log-view v-for="log in logs" :key="log" v-bind:id="log"></Log>
+					</div>
+				</div>
+			</section>
+
 			<section id="servers" class="row">
 				<h2 class="col-xs-12"><i class="fa fa-folder-open-o" aria-hidden="true"></i> Servers</h2>
 

@@ -2,12 +2,15 @@ const Vue = require("vue");
 const auth = require("./auth");
 const Project = require("./Project");
 const Server = require("./Server");
+const Log = require("./Log");
+require("./components/log-view");
 
 const app = window.app = new Vue({
 	el: "#app",
 	data: {
 		projects: [],
 		servers: [],
+		logs: [],
 		newProject: false,
 		newServer: false,
 		username: auth.username,
@@ -22,20 +25,35 @@ const app = window.app = new Vue({
 			try {
 				await this.updateProjects();
 				await this.updateServers();
+				await this.updateLogs();
+
 				this.loggedIn = true;
 			} catch(err) {
 				this.loggedIn = false;
-				app.projects = [];
-				app.servers = [];
+				this.projects = [];
+				this.servers = [];
 			}
 		},
 
 		async updateProjects() {
-			app.projects = await Project.list();
+			this.projects = await Project.list();
 		},
 
 		async updateServers() {
-			app.servers = await Server.list();
+			this.servers = await Server.list();
+		},
+
+		async updateLogs() {
+			const logs = [];
+			const top = await Log.top();
+
+			for(let i = Math.max(top - 5, 0); i < top; i++) {
+				logs.push(i);
+			}
+
+			logs.reverse();
+
+			this.logs = logs;
 		},
 
 		async createProject(project) {
@@ -107,3 +125,7 @@ const app = window.app = new Vue({
 });
 
 app.updateLogin();
+
+setInterval(() => {
+	app.updateLogs();
+}, 1500);
