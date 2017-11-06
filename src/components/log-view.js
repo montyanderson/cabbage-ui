@@ -1,5 +1,6 @@
 const Vue = require("vue");
 const Log = require("../Log");
+const Project = require("../Project");
 
 Vue.component("log-view", {
 	props: [ "id" ],
@@ -7,11 +8,13 @@ Vue.component("log-view", {
 		toggle: false,
 		text: "",
 		status: "",
-		projectId: ""
+		projectId: "",
+		project: {}
 	}),
 	methods: {
 		async update() {
 			Object.assign(this, await Log.find(this.id));
+			this.project = await Project.find(this.projectId);
 		}
 	},
 	async created() {
@@ -25,7 +28,7 @@ Vue.component("log-view", {
 		}, this.toggle ? 500 : 2000);
 	},
 	template: `<div class="col-xs-12 log">
-		<h4 v-on:click="toggle = !toggle">Log #{{id}} ({{status}}) ({{projectId}})</h4>
+		<h4 v-on:click="toggle = !toggle">Log #{{id}} ({{status}}) ({{project.name}})</h4>
 		<pre v-if="toggle == true">{{text}}</pre>
 	</div>`
 });
