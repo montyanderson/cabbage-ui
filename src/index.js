@@ -106,7 +106,7 @@ const app = window.app = new Vue({
 		async deployProject(project) {
 			try {
 				const res = await Project.deploy(project.id);
-				alert(JSON.stringify(res, null, "\t"));
+				//alert(JSON.stringify(res, null, "\t"));
 			} catch(err) {
 				//alert(`Deployment failed! ${err}`);
 			}
