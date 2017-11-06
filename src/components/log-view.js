@@ -18,11 +18,11 @@ Vue.component("log-view", {
 		await this.update();
 
 		setInterval(async () => {
-			if(this.status != "succeeded") {
+			if(this.status == "pending") {
 				console.log(this);
 				await this.update();
 			}
-		}, 1000);
+		}, this.toggle ? 500 : 2000);
 	},
 	template: `<div class="col-xs-12 log">
 		<h4 v-on:click="toggle = !toggle">Log #{{id}} ({{status}}) ({{projectId}})</h4>
