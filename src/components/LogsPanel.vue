@@ -4,7 +4,9 @@
 
 		<div class="col-xs-12">
 			<div class="row list">
-				<log-view v-for="log in logs" v-bind:id="log"></log-view>
+				<div class="col-xs-12" v-for="log in logs">
+					<log-view v-bind:id="log"></log-view>
+				</div>
 			</div>
 		</div>
 	</section>

@@ -29,7 +29,7 @@ module.exports = {
 			this.$emit("edit");
 		},
 		async delete() {
-			if(confirm(`Are you sure you want to delete '${this.server.name}'?`) == true) {
+			if(confirm(`Are you sure you want to delete the server '${this.server.name}'?`) == true) {
 				Server.delete(this.server);
 				store.dispatch("updateServers");
 			}

@@ -1,7 +1,14 @@
 <template>
-	<div class="col-xs-12 log">
-		<h4 v-on:click="toggle = !toggle">Log #{{id}} ({{status}}) ({{project.name}}) ({{startPretty}}) ({{time}}ms)</h4>
-		<pre v-if="toggle == true">{{text}}</pre>
+	<div class="row log">
+		<div class="col-xs-12">
+			<h3><i class="fa fa-file-text-o" aria-hidden="true"></i> Log #{{id}}</h3>
+		</div>
+
+		<div class="col-xs-12">
+			<h4 v-on:click="toggle = !toggle"><strong>{{project.name}}</strong> {{startPretty}} ({{time}}ms)</h4>
+		</div>
+
+		<pre class="col-xs-12" v-if="toggle == true">{{text}}</pre>
 	</div>
 </template>
 
