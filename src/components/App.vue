@@ -2,7 +2,7 @@
 	<div>
 		<NavBar></NavBar>
 
-		<main class="container row">
+		<main class="container row" v-if="auth">
 			<div class="col-xs-6">
 				<projects-panel></projects-panel>
 			</div>
@@ -28,6 +28,11 @@ module.exports = {
 	data: () => ({
 		loggedIn: false
 	}),
+	computed: {
+		auth() {
+			return this.$store.getters.auth;
+		}
+	},
 	components: {
 		NavBar,
 		ProjectsPanel,

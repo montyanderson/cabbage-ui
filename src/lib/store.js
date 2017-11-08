@@ -9,7 +9,7 @@ Vue.use(Vuex);
 
 const store = module.exports = new Vuex.Store({
 	state: {
-		login: localStorage.login ? JSON.stringify(localStorage.login) : {},
+		login: {},
 		auth: false,
 		projects: [],
 		servers: [],

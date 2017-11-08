@@ -10,3 +10,7 @@ new Vue({
 	store,
 	render: createElement => createElement("app")
 });
+
+if(localStorage.login) {
+	store.dispatch("login", JSON.parse(localStorage.login));
+}
