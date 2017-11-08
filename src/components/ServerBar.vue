@@ -14,6 +14,9 @@
 </template>
 
 <script>
+const store = require("../lib/store");
+const Server = require("../lib/Server");
+
 module.exports = {
 	props: [ "server" ],
 	computed: {
@@ -25,8 +28,11 @@ module.exports = {
 		edit() {
 			this.$emit("edit");
 		},
-		ddelete() {
-
+		async delete() {
+			if(confirm(`Are you sure you want to delete '${this.server.name}'?`) == true) {
+				Server.delete(this.server);
+				store.dispatch("updateServers");
+			}
 		}
 	}
 };

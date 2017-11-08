@@ -56,9 +56,10 @@ module.exports = {
 			store.dispatch("updateProjects");
 		},
 		async delete() {
-			await Project.delete(this.project);
-
-			store.dispatch("updateProjects");
+			if(confirm(`Are you sure you want to delete the project '${this.project.name}'?`) == true) {
+				await Project.delete(this.project);
+				store.dispatch("updateProjects");
+			}
 		},
 		async deploy() {
 			await Project.deploy(this.project.id);
