@@ -58,7 +58,7 @@ const store = module.exports = new Vuex.Store({
 			const top = await Log.top();
 
 			for(let i = Math.max(top - 5, 0); i < top; i++) {
-				logs.push(i);
+				logs.unshift(i);
 			}
 
 			commit("setLogs", logs);
