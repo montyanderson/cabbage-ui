@@ -2,7 +2,7 @@ const axios = require("axios");
 const base = require("./base");
 const auth = require("./auth");
 
-const Project = module.exports = {
+module.exports = {
 	async create(project) {
 		return (await axios.put(`${base}/project`, project, {
 			auth

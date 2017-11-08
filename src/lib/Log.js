@@ -2,7 +2,7 @@ const axios = require("axios");
 const base = require("./base");
 const auth = require("./auth");
 
-const Log = module.exports = {
+module.exports = {
 	async top() {
 		return (await axios.get(`${base}/log/top`, {
 			auth

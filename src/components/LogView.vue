@@ -1,15 +1,25 @@
-const Vue = require("vue");
-const Log = require("../Log");
-const Project = require("../Project");
+<template>
+	<div class="col-xs-12 log">
+		<h4 v-on:click="toggle = !toggle">Log #{{id}} ({{status}}) ({{project.name}})</h4>
+		<pre v-if="toggle == true">{{text}}</pre>
+	</div>
+</template>
 
-Vue.component("log-view", {
+<script>
+const Vue = require("vue");
+const Log = require("../lib/Log");
+const Project = require("../lib/Project");
+
+module.exports = {
 	props: [ "id" ],
 	data: () => ({
 		toggle: false,
 		text: "",
 		status: "",
 		projectId: "",
-		project: {}
+		project: {
+			name: ""
+		}
 	}),
 	methods: {
 		async update() {
@@ -22,13 +32,9 @@ Vue.component("log-view", {
 
 		setInterval(async () => {
 			if(this.status == "pending") {
-				console.log(this);
 				await this.update();
 			}
-		}, this.toggle ? 500 : 2000);
-	},
-	template: `<div class="col-xs-12 log">
-		<h4 v-on:click="toggle = !toggle">Log #{{id}} ({{status}}) ({{project.name}})</h4>
-		<pre v-if="toggle == true">{{text}}</pre>
-	</div>`
-});
+		}, 2000);
+	}
+};
+</script>

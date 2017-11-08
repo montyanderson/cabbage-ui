@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "browserify src/index.js -o bundle.js",
-    "dev": "watchify src/index.js -o bundle.js"
+    "prepublish": "NODE_ENV=production browserify -t vueify -e src/index.js | babel-minify > bundle.js",
+    "dev": "watchify -t vueify -e src/index.js -o bundle.js"
   },
   "repository": {
     "type": "git",
@@ -21,11 +21,10 @@
   "dependencies": {
     "axios": "^0.16.2",
     "browserify": "^14.4.0",
-    "vue": "^2.4.2",
+    "vue": "^2.5.3",
+    "vueify": "^9.4.1",
     "vuex": "^3.0.1",
-    "watchify": "^3.9.0"
-  },
-  "browser": {
-    "vue": "vue/dist/vue.common.js"
+    "watchify": "^3.9.0",
+    "babel-minify": "^0.2.0"
   }
 }
