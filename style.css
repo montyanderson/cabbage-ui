@@ -67,6 +67,7 @@ button {
 	transition: 0.15s filter;
 	display: inline;
 	transition: 0.15s box-shadow;
+	cursor: pointer;
 }
 
 button.small:hover {
@@ -178,6 +179,10 @@ input {
 .project { background-color: #95E1D3; }
 .server  { background-color: #FCE38A; }
 .log     { background-color: #EDB1F1; }
+
+.log {
+	cursor: pointer;
+}
 
 .log pre {
 	width: 100%;
