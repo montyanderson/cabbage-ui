@@ -10,5 +10,3 @@ new Vue({
 	store,
 	render: createElement => createElement("app")
 });
-
-store.dispatch("load");

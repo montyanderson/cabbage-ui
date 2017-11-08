@@ -5,14 +5,14 @@ const auth = require("./auth");
 module.exports = {
 	async top() {
 		return (await axios.get(`${base}/log/top`, {
-			auth
+			auth: auth
 		})).data;
 	},
 
 	async find(id) {
 		return (await axios.get(`${base}/log`, {
 			params: { id },
-			auth
+			auth: auth
 		})).data;
 	}
 };
