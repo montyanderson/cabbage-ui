@@ -21,7 +21,7 @@
 				On
 			</button>
 
-			<button class="small delete" v-on:click="delete(project)">Delete</button>
+			<button class="small delete" v-on:click="remove">Delete</button>
 		</div>
 
 		<h4 class="col-xs-12">{{project.repo}}</h4>
@@ -55,7 +55,7 @@ module.exports = {
 
 			store.dispatch("updateProjects");
 		},
-		async delete() {
+		async remove() {
 			if(confirm(`Are you sure you want to delete the project '${this.project.name}'?`) == true) {
 				await Project.delete(this.project.id);
 				store.dispatch("updateProjects");
