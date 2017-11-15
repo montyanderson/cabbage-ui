@@ -21,7 +21,7 @@
 				On
 			</button>
 
-			<button class="small delete" v-on:click="deleteProject(project)">Delete</button>
+			<button class="small delete" v-on:click="delete(project)">Delete</button>
 		</div>
 
 		<h4 class="col-xs-12">{{project.repo}}</h4>
