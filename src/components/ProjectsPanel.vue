@@ -77,7 +77,16 @@ module.exports = {
 				this.search.split(" ").every(keyword =>
 					project.name.indexOf(keyword) !== -1
 				)
-			);
+			).sort((a, b) => {
+				if(a.name < b.name)
+					return -1;
+
+				if(a.name > b.name)
+					return 1;
+
+				if(a.name === b.name)
+					return 0;
+			});
 		}
 	},
 	methods: {
