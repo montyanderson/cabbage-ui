@@ -38,8 +38,14 @@
 		</div>
 
 		<div class="col-xs-12">
+			<div class="row">
+				<input v-model="search" placeholder="Search">
+			</div>
+		</div>
+
+		<div class="col-xs-12">
 			<div class="row list">
-				<div v-for="project in projects" class="col-xs-12">
+				<div v-for="project in filteredProjects" class="col-xs-12">
 					<project-bar v-bind:project="project" v-on:edit="edit(project)"></project-bar>
 				</div>
 			</div>
@@ -53,7 +59,8 @@ const ProjectBar = require("./ProjectBar.vue");
 
 module.exports = {
 	data: () => ({
-		newProject: false
+		newProject: false,
+		search: ""
 	}),
 	components: {
 		ProjectBar
@@ -64,6 +71,13 @@ module.exports = {
 		},
 		servers() {
 			return this.$store.getters.servers;
+		},
+		filteredProjects() {
+			return this.projects.filter(project =>
+				this.search.split(" ").every(keyword =>
+					project.name.indexOf(keyword) !== -1
+				)
+			);
 		}
 	},
 	methods: {
@@ -74,7 +88,7 @@ module.exports = {
 			const index = this.newProject.servers.indexOf(server.id);
 
 			if(index === -1) {
-				this.newProject.servers.push(server.id);
+				this.newProject.servers.push(+server.id);
 			} else {
 				this.newProject.servers.splice(index, 1);
 			}
