@@ -39,7 +39,7 @@
 
 		<div class="col-xs-12">
 			<div class="row">
-				<input v-model="search" placeholder="Search">
+				<input v-model="search" class="search" placeholder="Search">
 			</div>
 		</div>
 
@@ -84,8 +84,7 @@ module.exports = {
 				if(a.name > b.name)
 					return 1;
 
-				if(a.name === b.name)
-					return 0;
+				return 0;
 			});
 		}
 	},
