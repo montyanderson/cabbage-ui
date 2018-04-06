@@ -68,7 +68,7 @@ module.exports = {
 	},
 	methods: {
 		serverChecked(server) {
-			return this.newProject.servers.indexOf(server.id) !== -1;
+			return this.newProject.servers.indexOf(+server.id) !== -1;
 		},
 		toggleServer(server) {
 			const index = this.newProject.servers.indexOf(server.id);
