@@ -80,7 +80,7 @@ module.exports = {
 
 				return search.split(" ").every(keyword =>
 					projectName.indexOf(keyword) !== -1
-				)
+				);
 			}).sort((a, b) => {
 				if(a.name < b.name)
 					return -1;
