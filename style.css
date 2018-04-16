@@ -128,7 +128,7 @@ button.off {
 }
 
 input {
-	width: 100%;
+	width: calc(100% - 3.2rem);
 	padding: 0.6rem;
 	font-size: 1.2rem;
 	margin-bottom: 1rem;
@@ -137,6 +137,11 @@ input {
 	border: 1px solid #d1d5da;
 	font-family: "Lato";
 	border-radius: 0.1rem;
+}
+
+#projects, #servers, #logs {
+	margin-left: 2rem;
+	margin-right: 2rem;
 }
 
 #projects > *, #servers > *, #logs > * {
@@ -151,10 +156,6 @@ input {
   to {
 	  margin-top: 0;
   }
-}
-
-.search {
-	margin-right: 1.8rem;
 }
 
 .project, .server, .log {

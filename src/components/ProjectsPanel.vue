@@ -73,11 +73,15 @@ module.exports = {
 			return this.$store.getters.servers;
 		},
 		filteredProjects() {
-			return this.projects.filter(project =>
-				this.search.split(" ").every(keyword =>
-					project.name.indexOf(keyword) !== -1
+			const search = this.search.toLowerCase();
+
+			return this.projects.filter(project => {
+				const projectName = project.name.toLowerCase();
+
+				return search.split(" ").every(keyword =>
+					projectName.indexOf(keyword) !== -1
 				)
-			).sort((a, b) => {
+			}).sort((a, b) => {
 				if(a.name < b.name)
 					return -1;
 
@@ -103,6 +107,7 @@ module.exports = {
 		},
 		edit(project) {
 			this.newProject = Object.assign({}, project);
+			window.scrollTo(0, 0);
 		},
 		blank() {
 			if(typeof this.newProject === "object") {
