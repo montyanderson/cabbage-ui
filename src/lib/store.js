@@ -43,7 +43,10 @@ const store = module.exports = new Vuex.Store({
 		async load(context) {
 			context.dispatch("updateProjects");
 			context.dispatch("updateServers");
-			context.dispatch("updateLogs");
+
+			setInterval(() => {
+				context.dispatch("updateLogs");
+			}, 5000);
 
 			context.commit("auth");
 		},
