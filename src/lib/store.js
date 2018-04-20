@@ -48,16 +48,16 @@ const store = module.exports = new Vuex.Store({
 			context.commit("auth");
 		},
 		async updateProjects({ commit }) {
-			commit("setProjects", await Project.list())
+			commit("setProjects", await Project.list());
 		},
 		async updateServers({ commit }) {
-			commit("setServers", await Server.list())
+			commit("setServers", await Server.list());
 		},
 		async updateLogs({ commit }) {
 			const logs = [];
 			const top = await Log.top();
 
-			for(let i = Math.max(top - 5, 0); i < top; i++) {
+			for(let i = Math.max(top - 5, 0); i <= top; i++) {
 				logs.unshift(i);
 			}
 
