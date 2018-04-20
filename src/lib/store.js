@@ -44,6 +44,8 @@ const store = module.exports = new Vuex.Store({
 			context.dispatch("updateProjects");
 			context.dispatch("updateServers");
 
+			context.dispatch("updateLogs");
+
 			setInterval(() => {
 				context.dispatch("updateLogs");
 			}, 5000);
