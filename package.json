@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/montyanderson/cabbage-ui#readme",
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.18.0",
     "browserify": "^14.4.0",
     "vue": "^2.5.3",
     "vueify": "^9.4.1",
