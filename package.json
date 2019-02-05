@@ -21,7 +21,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "browserify": "^14.4.0",
-    "vue": "^2.5.17",
+    "vue": "^2.6.2",
     "vueify": "^9.4.1",
     "vuex": "^3.0.1",
     "watchify": "^3.9.0",
