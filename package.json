@@ -20,7 +20,7 @@
   "homepage": "https://github.com/montyanderson/cabbage-ui#readme",
   "dependencies": {
     "axios": "^0.18.0",
-    "browserify": "^14.4.0",
+    "browserify": "^16.5.2",
     "vue": "^2.5.17",
     "vueify": "^9.4.1",
     "vuex": "^3.0.1",
